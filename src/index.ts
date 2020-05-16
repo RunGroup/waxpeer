@@ -126,7 +126,7 @@ export class Waxpeer {
    */
   public searchItems(names: string[]): Promise<GetItems> {
     let searchNames = names.map(i => `name=${encodeURIComponent(i)}`).join('&')
-    return this.get('search-items-by-nam', searchNames)
+    return this.get('search-items-by-name', searchNames)
   }
 
 
