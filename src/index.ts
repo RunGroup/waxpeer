@@ -63,7 +63,7 @@ export class Waxpeer {
       id = [ids]
     else
       id = [...ids]
-    return this.get('/check-many-project-id', 'v1', id.map(i => `id=${i}`).join('&'))
+    return this.get('check-many-project-id', 'v1', id.map(i => `id=${i}`).join('&'))
   }
 
   /**
