@@ -22,9 +22,10 @@ export class Waxpeer {
    * @param price Price, should be greater than item price
    * @param token Token from tradelink
    * @param partner Partner from tradelink
+   * @param projectId string
    */
-  public buyItemWithName(name: string, price: number, token: string, partner: string): Promise<IBuy> {
-    return this.get('buy-one-p2p-name', 'v1', `name=${encodeURIComponent(name)}&price=${price}&token=${token}&partner=${partner}`)
+  public buyItemWithName(name: string, price: number, token: string, partner: string, projectId: string): Promise<IBuy> {
+    return this.get('buy-one-p2p-name', 'v1', `name=${encodeURIComponent(name)}&price=${price}&token=${token}&partner=${partner}&project_id=${projectId}`)
   }
 
   /**
@@ -32,8 +33,8 @@ export class Waxpeer {
    * @param item_id Item id from fetching items
    * @param price Price of the item 1$=1000
    * @param token Token from tradelink
-   * @param projectId string
    * @param partner Partner from tradelink
+   * @param projectId string
    */
   public buyItemWithId(item_id: number, price: number, token: string, partner: string, projectId: string): Promise<IBuy> {
     return this.get('buy-one-p2p', 'v1', `item_id=${item_id}&price=${price}&token=${token}&partner=${partner}&project_id=${projectId}`)
