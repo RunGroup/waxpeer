@@ -32,10 +32,11 @@ export class Waxpeer {
    * @param item_id Item id from fetching items
    * @param price Price of the item 1$=1000
    * @param token Token from tradelink
+   * @param projectId string
    * @param partner Partner from tradelink
    */
-  public buyItemWithId(item_id: number, price: number, token: string, partner: string): Promise<IBuy> {
-    return this.get('buy-one-p2p', 'v1', `item_id=${item_id}&price=${price}&token=${token}&partner=${partner}`)
+  public buyItemWithId(item_id: number, price: number, token: string, partner: string, projectId: string): Promise<IBuy> {
+    return this.get('buy-one-p2p', 'v1', `item_id=${item_id}&price=${price}&token=${token}&partner=${partner}&project_id=${projectId}`)
   }
 
   /**
@@ -49,6 +50,19 @@ export class Waxpeer {
     else
       id = [...ids]
     return this.get('check-many-steam', 'v1', id.map(i => `id=${i}`).join('&'))
+  }
+
+  /**
+   *
+   * @param ids Ids or id that you recived when purchasing items
+   */
+  public checkManyProjectId(ids: number | number[] | string | string[]): Promise<TradesStatus> {
+    let id = []
+    if (typeof ids !== 'object')
+      id = [ids]
+    else
+      id = [...ids]
+    return this.get('/check-many-project-id', 'v1', id.map(i => `id=${i}`).join('&'))
   }
 
   /**
