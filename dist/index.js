@@ -126,7 +126,7 @@ class Waxpeer {
      * @param names Array of item names
      */
     searchItems(names) {
-        let searchNames = names.map(i => `name=${encodeURIComponent(i)}`).join('&');
+        let searchNames = names.map(i => `names=${encodeURIComponent(i)}`).join('&');
         return this.get('search-items-by-name', "v1", searchNames);
     }
     /**
